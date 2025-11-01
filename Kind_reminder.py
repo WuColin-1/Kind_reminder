@@ -1,6 +1,7 @@
 import tkinter as tk
 import random 
 
+
 root = tk.Tk()
 
 screem_w=root.winfo_screenwidth()
@@ -19,6 +20,7 @@ label=tk.Label(
 
 )
 label.pack(expand=True)
+
 messages = [
     "Tired? Have a rest",
     "Take a deep breath and relax",
@@ -71,6 +73,8 @@ def on_key_press(event):
     if event.keysym=="Escape":
         root.destroy()
 root.bind("<Key>",on_key_press)
+
+
 
 def show_window(index=0):
     win = tk.Toplevel()                 # Create a new window
