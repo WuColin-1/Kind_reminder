@@ -1,26 +1,25 @@
 import tkinter as tk
 import random 
 
-
 root = tk.Tk()
-
+# get the size of the screem
 screem_w=root.winfo_screenwidth()
 screem_v=root.winfo_screenheight()
 
-
+# define main window
 root.geometry(f"500x150+{int(screem_w/2)}+{int(screem_v/2)}")
 root.title("quit tips")
 root.config(bg="skyblue")
 label=tk.Label(
     root,
-    text="press Esc to quit the programm",
+    text="press Esc to quit the programm", # way to quit the progamm
     font=("Arial", 30), 
     fg="black",
     bg="skyblue"
 
 )
 label.pack(expand=True)
-
+# messages and colors lists
 messages = [
     "Tired? Have a rest",
     "Take a deep breath and relax",
@@ -69,15 +68,16 @@ color = [
     "#F08080",  # LightCoral
 ]
 
+# captrue the event from keyboard
 def on_key_press(event):
     if event.keysym=="Escape":
         root.destroy()
 root.bind("<Key>",on_key_press)
  
 
-
+# Create a new window
 def show_window(index=0):
-    win = tk.Toplevel()                 # Create a new window
+    win = tk.Toplevel() 
     win.title(f"Tip")
     win.geometry(f"600x200+{random.randint(0,screem_w)}+{random.randint(0,screem_v)}")  # Offset window display
     color_code=random.randint(0,len(color)-1)
@@ -87,9 +87,9 @@ def show_window(index=0):
     label = tk.Label(win, text=messages[text_code], font=("Arial", 25), fg="black", bg=f"{color[color_code]}")
     label.pack(expand=True)
     
-    # Show the next window after 2 seconds
+    # Show the next window after 0.5 seconds
     root.after(500, show_window, index + 1)
 
-# Start showing the first window
+# show the first window
 show_window()
 root.mainloop()
